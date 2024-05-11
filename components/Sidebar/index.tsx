@@ -112,59 +112,374 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             </h3>
 
             <ul className="mb-6 flex flex-col gap-1.5">
-              {/* <!-- Menu Item Product --> */}
+              {/* <!-- Products Menu Start --> */}
               <li>
-                <Link
-                  href="/products"
-                  className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes("products") &&
-                    "bg-graydark dark:bg-meta-4"
-                  }`}
+                <SidebarLinkGroup
+                  activeCondition={
+                    pathname === "/products" || pathname.includes("products")
+                  }
                 >
-                  <svg
-                    className="fill-current"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.7499 2.9812H14.2874V2.36245C14.2874 2.02495 14.0062 1.71558 13.6405 1.71558C13.2749 1.71558 12.9937 1.99683 12.9937 2.36245V2.9812H4.97803V2.36245C4.97803 2.02495 4.69678 1.71558 4.33115 1.71558C3.96553 1.71558 3.68428 1.99683 3.68428 2.36245V2.9812H2.2499C1.29365 2.9812 0.478027 3.7687 0.478027 4.75308V14.5406C0.478027 15.4968 1.26553 16.3125 2.2499 16.3125H15.7499C16.7062 16.3125 17.5218 15.525 17.5218 14.5406V4.72495C17.5218 3.7687 16.7062 2.9812 15.7499 2.9812ZM1.77178 8.21245H4.1624V10.9968H1.77178V8.21245ZM5.42803 8.21245H8.38115V10.9968H5.42803V8.21245ZM8.38115 12.2625V15.0187H5.42803V12.2625H8.38115ZM9.64678 12.2625H12.5999V15.0187H9.64678V12.2625ZM9.64678 10.9968V8.21245H12.5999V10.9968H9.64678ZM13.8374 8.21245H16.228V10.9968H13.8374V8.21245ZM2.2499 4.24683H3.7124V4.83745C3.7124 5.17495 3.99365 5.48433 4.35928 5.48433C4.7249 5.48433 5.00615 5.20308 5.00615 4.83745V4.24683H13.0499V4.83745C13.0499 5.17495 13.3312 5.48433 13.6968 5.48433C14.0624 5.48433 14.3437 5.20308 14.3437 4.83745V4.24683H15.7499C16.0312 4.24683 16.2562 4.47183 16.2562 4.75308V6.94683H1.77178V4.75308C1.77178 4.47183 1.96865 4.24683 2.2499 4.24683ZM1.77178 14.5125V12.2343H4.1624V14.9906H2.2499C1.96865 15.0187 1.77178 14.7937 1.77178 14.5125ZM15.7499 15.0187H13.8374V12.2625H16.228V14.5406C16.2562 14.7937 16.0312 15.0187 15.7499 15.0187Z"
-                      fill=""
-                    />
-                  </svg>
-                  Products
-                </Link>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          href="#"
+                          className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                            (pathname === "/products" ||
+                              pathname.includes("products")) &&
+                            "bg-graydark dark:bg-meta-4"
+                          }`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            sidebarExpanded
+                              ? handleClick()
+                              : setSidebarExpanded(true);
+                          }}
+                        >
+                          <svg
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                            height="1.25em"
+                            width="1.25em"
+                          >
+                            <path d="M8.186 1.113a.5.5 0 00-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 011.114 0l7.129 2.852A.5.5 0 0116 3.5v8.662a1 1 0 01-.629.928l-7.185 2.874a.5.5 0 01-.372 0L.63 13.09a1 1 0 01-.63-.928V3.5a.5.5 0 01.314-.464L7.443.184z" />
+                          </svg>
+                          Products
+                          <svg
+                            className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                              open && "rotate-180"
+                            }`}
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                              fill=""
+                            />
+                          </svg>
+                        </Link>
+                        {/* <!-- Dropdown Menu Start --> */}
+                        <div
+                          className={`translate transform overflow-hidden ${
+                            !open && "hidden"
+                          }`}
+                        >
+                          <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                            <li>
+                              <Link
+                                href="/products"
+                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                  pathname === "/products" && "text-white"
+                                }`}
+                              >
+                                <svg
+                                  viewBox="0 0 21 21"
+                                  fill="currentColor"
+                                  height="1.25em"
+                                  width="1.25em"
+                                >
+                                  <g
+                                    fill="none"
+                                    fillRule="evenodd"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path d="M16.5 15.5v-10a2 2 0 00-2-2h-8a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2zM9.5 7.5h5M6.5 7.5h1M9.5 10.5h5M6.5 10.5h1M9.5 13.5h5M6.5 13.5h1" />
+                                  </g>
+                                </svg>
+                                List all
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/products/create"
+                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                  pathname === "/products/create" &&
+                                  "text-white"
+                                }`}
+                              >
+                                <svg
+                                  viewBox="0 0 21 21"
+                                  fill="currentColor"
+                                  height="1.25em"
+                                  width="1.25em"
+                                >
+                                  <g
+                                    fill="none"
+                                    fillRule="evenodd"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path d="M10 4.5H5.5a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2V11" />
+                                    <path d="M17.5 3.467a1.462 1.462 0 01-.017 2.05L10.5 12.5l-3 1 1-3 6.987-7.046a1.409 1.409 0 011.885-.104zM15.5 5.5l.953 1" />
+                                  </g>
+                                </svg>
+                                Create
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* <!-- Dropdown Menu End --> */}
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
               </li>
-              {/* <!-- Menu Item Product --> */}
+              {/* <!-- Products Menu End --> */}
 
-              {/* <!-- Menu Item Categories --> */}
+              {/* <!-- Categories Menu Start --> */}
               <li>
-                <Link
-                  href={Routes.CATEGORIES}
-                  className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes("categories") &&
-                    "bg-graydark dark:bg-meta-4"
-                  }`}
+                <SidebarLinkGroup
+                  activeCondition={
+                    pathname === "/categories" ||
+                    pathname.includes("categories")
+                  }
                 >
-                  <svg
-                    className="fill-current"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.7499 2.9812H14.2874V2.36245C14.2874 2.02495 14.0062 1.71558 13.6405 1.71558C13.2749 1.71558 12.9937 1.99683 12.9937 2.36245V2.9812H4.97803V2.36245C4.97803 2.02495 4.69678 1.71558 4.33115 1.71558C3.96553 1.71558 3.68428 1.99683 3.68428 2.36245V2.9812H2.2499C1.29365 2.9812 0.478027 3.7687 0.478027 4.75308V14.5406C0.478027 15.4968 1.26553 16.3125 2.2499 16.3125H15.7499C16.7062 16.3125 17.5218 15.525 17.5218 14.5406V4.72495C17.5218 3.7687 16.7062 2.9812 15.7499 2.9812ZM1.77178 8.21245H4.1624V10.9968H1.77178V8.21245ZM5.42803 8.21245H8.38115V10.9968H5.42803V8.21245ZM8.38115 12.2625V15.0187H5.42803V12.2625H8.38115ZM9.64678 12.2625H12.5999V15.0187H9.64678V12.2625ZM9.64678 10.9968V8.21245H12.5999V10.9968H9.64678ZM13.8374 8.21245H16.228V10.9968H13.8374V8.21245ZM2.2499 4.24683H3.7124V4.83745C3.7124 5.17495 3.99365 5.48433 4.35928 5.48433C4.7249 5.48433 5.00615 5.20308 5.00615 4.83745V4.24683H13.0499V4.83745C13.0499 5.17495 13.3312 5.48433 13.6968 5.48433C14.0624 5.48433 14.3437 5.20308 14.3437 4.83745V4.24683H15.7499C16.0312 4.24683 16.2562 4.47183 16.2562 4.75308V6.94683H1.77178V4.75308C1.77178 4.47183 1.96865 4.24683 2.2499 4.24683ZM1.77178 14.5125V12.2343H4.1624V14.9906H2.2499C1.96865 15.0187 1.77178 14.7937 1.77178 14.5125ZM15.7499 15.0187H13.8374V12.2625H16.228V14.5406C16.2562 14.7937 16.0312 15.0187 15.7499 15.0187Z"
-                      fill=""
-                    />
-                  </svg>
-                  Categories
-                </Link>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          href="#"
+                          className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                            (pathname === "/categories" ||
+                              pathname.includes("categories")) &&
+                            "bg-graydark dark:bg-meta-4"
+                          }`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            sidebarExpanded
+                              ? handleClick()
+                              : setSidebarExpanded(true);
+                          }}
+                        >
+                          <svg
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                            height="1.25em"
+                            width="1.25em"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M2.5 12a.5.5 0 01.5-.5h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z"
+                            />
+                          </svg>
+                          Categories
+                          <svg
+                            className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                              open && "rotate-180"
+                            }`}
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                              fill=""
+                            />
+                          </svg>
+                        </Link>
+                        {/* <!-- Dropdown Menu Start --> */}
+                        <div
+                          className={`translate transform overflow-hidden ${
+                            !open && "hidden"
+                          }`}
+                        >
+                          <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                            <li>
+                              <Link
+                                href="/categories"
+                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                  pathname === "/categories" && "text-white"
+                                }`}
+                              >
+                                <svg
+                                  viewBox="0 0 21 21"
+                                  fill="currentColor"
+                                  height="1.25em"
+                                  width="1.25em"
+                                >
+                                  <g
+                                    fill="none"
+                                    fillRule="evenodd"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path d="M16.5 15.5v-10a2 2 0 00-2-2h-8a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2zM9.5 7.5h5M6.5 7.5h1M9.5 10.5h5M6.5 10.5h1M9.5 13.5h5M6.5 13.5h1" />
+                                  </g>
+                                </svg>
+                                List all
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/categories/create"
+                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                  pathname === "/categories/create" &&
+                                  "text-white"
+                                }`}
+                              >
+                                <svg
+                                  viewBox="0 0 21 21"
+                                  fill="currentColor"
+                                  height="1.25em"
+                                  width="1.25em"
+                                >
+                                  <g
+                                    fill="none"
+                                    fillRule="evenodd"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path d="M10 4.5H5.5a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2V11" />
+                                    <path d="M17.5 3.467a1.462 1.462 0 01-.017 2.05L10.5 12.5l-3 1 1-3 6.987-7.046a1.409 1.409 0 011.885-.104zM15.5 5.5l.953 1" />
+                                  </g>
+                                </svg>
+                                Create
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* <!-- Dropdown Menu End --> */}
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
               </li>
-              {/* <!-- Menu Item Categories --> */}
+              {/* <!-- Categories Menu End --> */}
+
+              {/* <!-- Categories Menu Start --> */}
+              <li>
+                <SidebarLinkGroup
+                  activeCondition={
+                    pathname === "/brands" || pathname.includes("brands")
+                  }
+                >
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          href="#"
+                          className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                            (pathname === "/brands" ||
+                              pathname.includes("brands")) &&
+                            "bg-graydark dark:bg-meta-4"
+                          }`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            sidebarExpanded
+                              ? handleClick()
+                              : setSidebarExpanded(true);
+                          }}
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            height="1.25em"
+                            width="1.25em"
+                          >
+                            <path d="M0 23.291h19.601v-2.978H2.98V3.689h16.626V14.6h-1.422l2.908 2.909L24 14.599h-1.417V.709H0v22.582zm16.148-9.935a3.028 3.028 0 00-1.653-1.58 4.013 4.013 0 00-.916-.254 1.72 1.72 0 00.735-.296c.241-.161.455-.364.647-.609.192-.247.345-.535.458-.863.115-.33.171-.686.171-1.069 0-.648-.126-1.186-.377-1.617a2.858 2.858 0 00-1.033-1.033 4.614 4.614 0 00-1.536-.547 10.311 10.311 0 00-1.868-.162c-.754 0-1.382.018-1.887.054-.502.037-.945.083-1.329.145v12.933c.684.083 1.293.141 1.834.171.539.03 1.082.044 1.634.044a12.6 12.6 0 002.057-.162 5.022 5.022 0 001.723-.592c.499-.288.893-.68 1.187-1.177.294-.498.441-1.135.441-1.914 0-.575-.096-1.065-.288-1.472zm-5.983-6.035c.91-.111 1.873-.054 2.301.304.38.317.607.599.607 1.42 0 .751-.357 1.195-.608 1.356-.251.161-.59.368-1.403.368h-.897V7.321zm3.029 8.68c-.449.39-1.114.552-1.816.552-.79 0-1.213-.072-1.213-.072v-3.737h1.132c.711 0 1.438.126 1.832.464.509.437.611.895.611 1.505.001.609-.212.998-.546 1.288z" />
+                          </svg>
+                          Brands
+                          <svg
+                            className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
+                              open && "rotate-180"
+                            }`}
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M4.41107 6.9107C4.73651 6.58527 5.26414 6.58527 5.58958 6.9107L10.0003 11.3214L14.4111 6.91071C14.7365 6.58527 15.2641 6.58527 15.5896 6.91071C15.915 7.23614 15.915 7.76378 15.5896 8.08922L10.5896 13.0892C10.2641 13.4147 9.73651 13.4147 9.41107 13.0892L4.41107 8.08922C4.08563 7.76378 4.08563 7.23614 4.41107 6.9107Z"
+                              fill=""
+                            />
+                          </svg>
+                        </Link>
+                        {/* <!-- Dropdown Menu Start --> */}
+                        <div
+                          className={`translate transform overflow-hidden ${
+                            !open && "hidden"
+                          }`}
+                        >
+                          <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
+                            <li>
+                              <Link
+                                href="/brands"
+                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                  pathname === "/brands" && "text-white"
+                                }`}
+                              >
+                                <svg
+                                  viewBox="0 0 21 21"
+                                  fill="currentColor"
+                                  height="1.25em"
+                                  width="1.25em"
+                                >
+                                  <g
+                                    fill="none"
+                                    fillRule="evenodd"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path d="M16.5 15.5v-10a2 2 0 00-2-2h-8a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2zM9.5 7.5h5M6.5 7.5h1M9.5 10.5h5M6.5 10.5h1M9.5 13.5h5M6.5 13.5h1" />
+                                  </g>
+                                </svg>
+                                List all
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/brands/create"
+                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
+                                  pathname === "/brands/create" && "text-white"
+                                }`}
+                              >
+                                <svg
+                                  viewBox="0 0 21 21"
+                                  fill="currentColor"
+                                  height="1em"
+                                  width="1em"
+                                >
+                                  <g
+                                    fill="none"
+                                    fillRule="evenodd"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path d="M10 4.5H5.5a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2V11" />
+                                    <path d="M17.5 3.467a1.462 1.462 0 01-.017 2.05L10.5 12.5l-3 1 1-3 6.987-7.046a1.409 1.409 0 011.885-.104zM15.5 5.5l.953 1" />
+                                  </g>
+                                </svg>
+                                Create
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* <!-- Dropdown Menu End --> */}
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+              </li>
+              {/* <!-- Categories Menu End --> */}
 
               {/* <!-- Menu Item Settings --> */}
               <li>
@@ -177,8 +492,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 >
                   <svg
                     className="fill-current"
-                    width="18"
-                    height="19"
+                    width="1.25em"
+                    height="1.25em"
                     viewBox="0 0 18 19"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -242,8 +557,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       >
                         <svg
                           className="fill-current"
-                          width="18"
-                          height="19"
+                          width="1.25em"
+                          height="1.25em"
                           viewBox="0 0 18 19"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"

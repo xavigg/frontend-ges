@@ -3,7 +3,6 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import React from "react";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import CategoryListPage from "./components/categoryListTable";
-import AlertErrorComponent from "./components/alertError";
 
 export const metadata: Metadata = {
   title: "Gestion v1 | Category > Create",
