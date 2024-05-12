@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
 import React from "react";
 import CreateProductForm from "../components/createProductForm";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import Breadcrumb from "@/app/components/Breadcrumbs/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Gestion v1 | Products > Create",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const ProductCreatePage: React.FC = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb siteName= "Product" pageName="Create Product" />
+      <Breadcrumb backSite={[{ name: "Product", href: "/products" }]}  pageName="Create Product" />
       <CreateProductForm/>
     </DefaultLayout>
   );

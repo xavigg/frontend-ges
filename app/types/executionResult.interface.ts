@@ -1,4 +1,4 @@
-export interface ExecutionResult {
+export interface IExecutionResult {
     success: boolean;
     message: string;
     data?: Object;

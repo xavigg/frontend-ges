@@ -1,4 +1,4 @@
-import { Routes } from "@/models/routes.model";
+import { Routes } from "@/app/types/routes.enum";
 import { Product } from "../models/product.model";
 
 export const getProducts = (): Promise<Product[]> => {

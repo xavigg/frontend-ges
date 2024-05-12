@@ -1,12 +1,10 @@
-// pages/index.tsx
-'use client'
-import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
-import { Category } from '../models/category.model';
-import { getCategories } from '../services/categories.service';
+"use client";
+import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import { Category, getCategories } from "@categories/index";
 
 const CategoryListPage: NextPage = () => {
-  const [ categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {

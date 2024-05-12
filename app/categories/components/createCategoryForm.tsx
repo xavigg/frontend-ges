@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
-import { createCategory } from "../services/categories.service";
 import { NextPage } from "next";
-import { AlertErrorComponent, AlertOkComponent } from "./alertError";
-import { Category } from "../models/category.model";
+import {
+  createCategory,
+  AlertErrorComponent,
+  AlertOkComponent,
+} from "@categories/index";
 
 const CreateCategoryForm: NextPage = () => {
   const [name, setName] = useState("");
@@ -17,11 +19,11 @@ const CreateCategoryForm: NextPage = () => {
     console.log(result);
     if (result.success) {
       setMessage(result.message);
-      setIsError(false); 
+      setIsError(false);
       setShowAlert(true);
     } else {
       setMessage(result.message);
-      setIsError(true); 
+      setIsError(true);
       setShowAlert(true);
     }
   };
@@ -33,7 +35,7 @@ const CreateCategoryForm: NextPage = () => {
 
   return (
     <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 ">
-  <div className="flex flex-col gap-9">
+      <div className="flex flex-col gap-9">
         {showAlert && isError && (
           <AlertErrorComponent msg={message} onClose={handleCloseAlert} />
         )}

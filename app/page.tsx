@@ -1,18 +1,23 @@
 import ECommerce from "@/components/Dashboard/E-commerce";
 import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
+import { getProducts } from "./products";
 
 export const metadata: Metadata = {
   title:
-    "Next.js E-commerce Dashboard | TailAdmin - Next.js Dashboard Template",
-  description: "This is Next.js Home for TailAdmin Dashboard Template",
+    "Gestion v1",
+  description: "POS",
 };
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts()
+  const cantidad = products.length.toString();
+
+  
   return (
     <>
       <DefaultLayout>
-        <ECommerce />
+        <ECommerce total={cantidad} />
       </DefaultLayout>
     </>
   );

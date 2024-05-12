@@ -24,30 +24,30 @@ const ProductListTablePage: NextPage = () => {
         Product List
       </h4>
 
-      <div className="flex flex-col">
-        <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+      <div className="flex flex-col ">
+        <div className="grid grid-cols-3 rounded-sm bg-black-2 dark:bg-meta-6 sm:grid-cols-5">
           <div className="p-2.5 xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
+            <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
               Product
             </h5>
           </div>
           <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
+          <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
               Category
             </h5>
           </div>
           <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
+          <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
               Brand
             </h5>
           </div>
           <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
+          <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
               Price
             </h5>
           </div>
           <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
+          <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
               Warranty
             </h5>
           </div>
@@ -64,7 +64,7 @@ const ProductListTablePage: NextPage = () => {
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
               <div className="flex-shrink-0">
-                <Image src={product.img_url} alt="Brand" width={48} height={48} />
+                <Image src={product.img_url} alt={product.name} width={60} height={60} />
               </div>
               <p className="hidden text-black dark:text-white sm:block">
                 {product.name}

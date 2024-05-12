@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { Routes } from "@/models/routes.model";
 
 interface SidebarProps {
   sidebarOpen: boolean;
