@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
 import React from "react";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import Breadcrumb from "@/app/components/Breadcrumbs/Breadcrumb";
 import CategoryListPage from "./components/categoryListTable";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const CreateCategoryPage: React.FC = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb siteName="Category" pageName="Create Category" />
+      <Breadcrumb backSite={[{ name: "Category", href: "/categories" }]}  pageName="List All" />
       <CategoryListPage />
     </DefaultLayout>
   );

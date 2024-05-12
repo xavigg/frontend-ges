@@ -4,7 +4,7 @@ import SelectGroupOne from "@/components/SelectGroup/SelectGroupOne";
 
 const CreateProductForm = () => {
   return (
-    <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-9 sm:grid-cols-1">
       <div className="flex flex-col gap-9">
         {/* <!-- Create Product Form --> */}
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">

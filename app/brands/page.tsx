@@ -3,17 +3,19 @@ import DefaultLayout from "@/app/components/Layouts/DefaultLayout";
 import React from "react";
 import Breadcrumb from "@/app/components/Breadcrumbs/Breadcrumb";
 import BrandListPage from "@brands/components/brandListTable";
-import LogIn from "./auth/components/login";
 
 export const metadata: Metadata = {
-  title: "Gestion v1 | Login",
-  description: "Login page to admin dashboard",
+  title: "Gestion v1 | Category > Create",
+  description: "Create a Category",
 };
 
-const LoginPage: React.FC = () => {
+const CreateBrandPage: React.FC = () => {
   return (
-      <LogIn/>
+    <DefaultLayout>
+      <Breadcrumb backSite={[{ name: "Brands", href: "/brands" }]}  pageName="List All" />
+      <BrandListPage />
+    </DefaultLayout>
   );
 };
 
-export default LoginPage;
+export default CreateBrandPage;

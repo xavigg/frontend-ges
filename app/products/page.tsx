@@ -1,20 +1,25 @@
+
 import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import React from "react";
+import DefaultLayout from "../components/Layouts/DefaultLayout";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
 import ProductListTablePage from "./components/productListTable";
+import ErrorBoundary from "../components/ErrorBoundary/errorBoundary";
 
 export const metadata: Metadata = {
-  title: "Gestion v1 | Products",
-  description:
-    "List of products",
+  title: "Gestion v1 | Login",
+  description: "Login page to admin dashboard",
 };
 
-const ProductsPage: React.FC = () => {
+export default async function Home() {
+
   return (
     <DefaultLayout>
-      <ProductListTablePage/>
+        <Breadcrumb
+          backSite={[{ name: "Product", href: "/products" }]}
+          pageName="List All"
+        />
+        <ProductListTablePage />
     </DefaultLayout>
   );
-};
-
-export default ProductsPage;
+}

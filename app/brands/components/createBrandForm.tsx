@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { NextPage } from "next";
+import { createBrand } from "@brands/services/brands.service";
 import {
-  createCategory,
   AlertErrorComponent,
   AlertOkComponent,
-} from "@categories/index";
+} from "@brands/components/alertError";
 
-const CreateCategoryForm: NextPage = () => {
+const CreateBrandForm: NextPage = () => {
   const [name, setName] = useState("");
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -15,7 +15,8 @@ const CreateCategoryForm: NextPage = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const result = await createCategory(name);
+    const result = await createBrand(name);
+
     if (result.success) {
       setMessage(result.message);
       setIsError(false);
@@ -45,20 +46,20 @@ const CreateCategoryForm: NextPage = () => {
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
             <h3 className="font-medium text-black dark:text-white">
-              Create Product
+              Create Brand
             </h3>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="p-6.5">
               <div className="mb-4.5">
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                  Category Name <span className="text-meta-1">*</span>
+                  Brand Name <span className="text-meta-1">*</span>
                 </label>
                 <input
                   id="name"
                   value={name}
                   type="text"
-                  placeholder="Enter category name"
+                  placeholder="Enter brand name"
                   onChange={(e) => setName(e.target.value)}
                   required
                   className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -75,4 +76,4 @@ const CreateCategoryForm: NextPage = () => {
     </div>
   );
 };
-export default CreateCategoryForm;
+export default CreateBrandForm;

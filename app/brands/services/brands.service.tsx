@@ -1,10 +1,10 @@
 import { IExecutionResult, Routes } from "@appTypes/index";
-import { Category } from "@categories/index";
+import { Brand } from "@brands/index";
 import axios from "axios";
 
-export const getCategories = async (): Promise<Category[]> => {
+export const getBrands = async (): Promise<Brand[]> => {
   try {
-    const url = `${process.env.NEXT_PUBLIC_LOCAL_BACKEND}${Routes.CATEGORIES}`;
+    const url = `${process.env.NEXT_PUBLIC_LOCAL_BACKEND}${Routes.BRANDS}`;
     const response = await axios.get(url, { withCredentials: true });
     return response.data;
   } catch (error) {
@@ -13,11 +13,11 @@ export const getCategories = async (): Promise<Category[]> => {
   }
 };
 
-export async function createCategory(name: string): Promise<IExecutionResult> {
-  const newCategory = { name: name };
-  const url = `${process.env.NEXT_PUBLIC_LOCAL_BACKEND}${Routes.CATEGORIES}`;
+export async function createBrand(name: string): Promise<IExecutionResult> {
+  const newBrand = { name: name };
+  const url = `${process.env.NEXT_PUBLIC_LOCAL_BACKEND}${Routes.BRANDS}`;
   try {
-    const response = await axios.post(url, newCategory, {
+    const response = await axios.post(url, newBrand, {
       withCredentials: true,
     });
     return response.data;
