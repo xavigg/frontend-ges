@@ -2,10 +2,6 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { Category, getCategories } from "@categories/index";
-"use client";
-import type { NextPage } from "next";
-import { useEffect, useState } from "react";
-import { Category, getCategories } from "@categories/index";
 
 const CategoryListPage: NextPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -57,7 +53,7 @@ const CategoryListPage: NextPage = () => {
 
         {categories.map((category) => (
           <div
-            className={`grid grid-cols-3 sm:grid-cols-5 border-b border-stroke dark:border-strokedark`}
+            className={`grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5`}
             key={category.categoryId}
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">

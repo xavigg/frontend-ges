@@ -28,7 +28,7 @@ const ProductListTablePage = async () => {
       <div className="flex flex-col">
         <div className="grid grid-cols-3 rounded-xl bg-black-2 dark:bg-yellow-400 sm:grid-cols-5">
           <div className="p-2.5 xl:p-5">
-            <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
+            
             <h5 className="text-sm font-medium uppercase text-white dark:text-black xsm:text-base">
               Product
             </h5>
