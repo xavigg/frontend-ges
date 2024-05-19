@@ -2,6 +2,10 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { Category, getCategories } from "@categories/index";
+"use client";
+import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import { Category, getCategories } from "@categories/index";
 
 const CategoryListPage: NextPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
